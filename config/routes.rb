@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
   root "photos#index"
 
+  # get "/users/:id" => "users#show", as: :user
+
   resources :likes
   resources :follow_requests
   resources :comments
   resources :photos
   devise_for :users
+  #resources :users, only: :show
+
+  get "/:username" => "users#show", as: :user
+  get ":username/liked" => "users#liked", as: :liked
+  get ":username/feed" => "users#feed", as: :feed
+  get ":username/discover" => "users#discover", as: :discover
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
