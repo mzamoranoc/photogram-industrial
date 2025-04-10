@@ -10,7 +10,8 @@
 #  encrypted_password     :string           default(""), not null
 #  likes_count            :integer          default(0)
 #  name                   :string
-#  private                :boolean
+#  photos_count           :integer          default(0)
+#  private                :boolean          default(TRUE)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
