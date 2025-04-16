@@ -22,6 +22,7 @@ class FollowRequestsController < ApplicationController
   # POST /follow_requests or /follow_requests.json
   def create
     @follow_request = FollowRequest.new(follow_request_params)
+    @follow_request.sender = current_user
 
     respond_to do |format|
       if @follow_request.save
@@ -65,6 +66,6 @@ class FollowRequestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def follow_request_params
-      params.expect(follow_request: [ :recipient_id, :sender_id, :status ])
+      params.require(follow_request: [ :recipient_id, :sender_id, :status ])
     end
 end
